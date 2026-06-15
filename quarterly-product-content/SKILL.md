@@ -20,13 +20,29 @@ plus directe, pas de chapeau "conviction produit"). Les traiter comme un seul do
 
 ---
 
-## Étape 1 — Définir la période et collecter les releases
+## Étape 1 — Cadrage initial (AVANT de collecter les releases)
 
-Demande à l'utilisateur (si pas déjà fourni) :
-- La période couverte (ex : "Q2 2026", "janvier–mars 2026")
-- Une date de fin approximative si pas explicite
+Avant toute recherche Slack, pose ces deux questions à l'utilisateur :
 
-Puis recherche dans #product-releases sur Slack toutes les releases de la période :
+**1. Accès au dernier blog post quarterly**
+
+Demande le lien (ou le contenu) du dernier blog post produit publié. Objectif : éviter les redits et les 
+features anticipées — certaines releases sont annoncées dans un quarter mais réellement sorties dans le 
+suivant. Si l'utilisateur n'a pas le lien sous la main, propose de chercher dans Notion ou sur batch.com.
+
+**2. Date de fin de capture**
+
+Demande explicitement la date à laquelle arrêter la capture des releases dans #product-releases. 
+Ne pas deviner à partir du nom du quarter — une feature annoncée le 28 mars peut appartenir au Q1 ou 
+être reportée au Q2 selon la décision de l'équipe.
+
+N'avance pas à l'étape 2 avant d'avoir ces deux éléments.
+
+---
+
+## Étape 2 — Collecter et filtrer les releases
+
+Recherche dans #product-releases sur Slack toutes les releases de la période :
 
 ```
 slack_search_public_and_private(
@@ -51,28 +67,55 @@ Si trop peu de résultats, élargis légèrement la fenêtre ou pagine.
 - `[Unplanned]` petites améliorations sans impact stratégique (ex : limite de labels +5)
 - Releases purement techniques (TypeScript strict, React Compiler, etc.)
 - Releases sans bénéfice direct pour un marketer/CRM manager
-
-En cas de doute sur une release, la garder dans une liste "à confirmer" et demander à l'utilisateur.
-
----
-
-## Étape 2 — Organiser les releases par angle narratif
-
-Ne pas lister les features dans l'ordre chronologique. Cherche 2-3 **thèmes forts** qui regroupent les 
-releases de façon cohérente et forment une histoire produit.
-
-Exemples d'angles narratifs passés :
-- "Activer votre donnée sans dépendre de la tech" → Cloud Sync
-- "Tous vos canaux dans un seul scénario" → Universal Channel  
-- "Mesurer l'impact business réel" → Conversion Goals
-
-Les features mineures rejoignent une section "Nos autres nouveautés" avec des H3 courts.
-
-Propose ton plan de structuration à l'utilisateur avant de rédiger. Attends confirmation.
+- Features déjà couvertes dans le dernier blog post (cf. étape 1)
 
 ---
 
-## Étape 3 — Rédiger le contenu (FR en premier, EN ensuite)
+## Étape 3 — Proposer une sélection éditoriale à valider
+
+Ne pas rédiger encore. Présenter une **proposition structurée** à l'utilisateur :
+
+```
+Voici ma sélection pour le blog post Q? YYYY :
+
+**3 sujets phares** (développement complet avec angle narratif)
+1. [Nom de la feature] — [angle narratif proposé / bénéfice mis en avant]
+2. [Nom de la feature] — [angle narratif proposé / bénéfice mis en avant]
+3. [Nom de la feature] — [angle narratif proposé / bénéfice mis en avant]
+
+**Sujets mineurs** (section "Nos autres nouveautés", traitement court)
+- [Feature A]
+- [Feature B]
+- [Feature C]
+- [Feature D]
+
+**Écarté** (interne / technique / déjà couvert)
+- [Feature X] — raison
+- [Feature Y] — raison
+
+Tu valides cette sélection ? Tu peux modifier l'ordre, déplacer une feature entre phares et mineurs, 
+ou en retirer/ajouter.
+```
+
+**Attends la validation explicite de l'utilisateur avant de continuer.**
+
+---
+
+## Étape 4 — Questions complémentaires avant rédaction
+
+Une fois la sélection validée, identifie les points flous ou manquants :
+
+- Une feature phare manque d'un exemple d'usage concret ?
+- Un chiffre clé serait utile pour appuyer un angle ?
+- Un nom de feature a changé récemment ?
+- Une date de disponibilité (bêta / GA) est à préciser ?
+
+Si tu as des questions, pose-les **toutes en même temps** dans un seul message. 
+Si tu n'as aucune question, passe directement à l'étape 5.
+
+---
+
+## Étape 5 — Rédiger le contenu (FR en premier, EN ensuite)
 
 ### Style éditorial Batch — règles strictes
 
@@ -94,7 +137,7 @@ Propose ton plan de structuration à l'utilisateur avant de rédiger. Attends co
 Pose 2-3 frictions récurrentes que ce quarter a résolues. Ni trop formel, ni trop marketing.
 Se termine sur une invitation à lire ("Bonne lecture !")
 
-[SECTION PRINCIPALE — 2 à 3 grandes features]
+[SECTION PRINCIPALE — les 3 features phares validées à l'étape 3]
 Pour chaque feature :
 
 ## [Titre = bénéfice, pas nom technique]
@@ -105,7 +148,7 @@ Présentation de la feature en 1-2 phrases, avec le **nom exact** en gras.
 Liste "Concrètement :" avec 3-5 points d'usage pratiques.
 Phrase de clôture sur l'impact business.
 
-[SECTION SECONDAIRE — features mineures]
+[SECTION SECONDAIRE — features mineures validées à l'étape 3]
 ## Nos autres nouveautés pour un CRM plus efficace
 
 ### [Nom ou bénéfice court]
@@ -134,7 +177,7 @@ Règles spécifiques EN :
 
 ---
 
-## Étape 4 — Publier dans Notion
+## Étape 6 — Publier dans Notion
 
 ### Trouver la bonne base Notion
 
@@ -196,7 +239,10 @@ Les `[internal]`, `[UX Improvement]` mineures, et releases purement techniques s
 
 ## Checklist avant publication
 
-- [ ] Toutes les features mentionnées sont bien client-facing (pas d'internal)
+- [ ] Le dernier blog post a été consulté — pas de redits
+- [ ] La date de fin de capture Slack a été confirmée par l'utilisateur
+- [ ] La sélection (phares + mineurs) a été validée par l'utilisateur
+- [ ] Toutes les questions complémentaires ont été posées et répondues
 - [ ] Chaque H2 exprime un bénéfice, pas un nom de feature
 - [ ] La version EN sonne idiomatique (pas de traduction littérale)
 - [ ] Les noms de features sont en gras à leur première apparition
