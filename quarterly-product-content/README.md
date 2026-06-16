@@ -13,7 +13,8 @@ Skill Claude Code qui génère le blog post et la newsletter produit trimestriel
 3. **Sélection éditoriale** — propose 3 features phares + liste de mineurs, **attend ta validation avant de continuer**
 4. **Questions** — pose toutes ses questions en une fois si besoin, sinon passe directement à la rédaction
 5. **Rédaction** — rédige en français puis en anglais dans le style éditorial Batch (600–900 mots par version)
-6. **Publication** — crée deux pages Notion (FR + EN) et partage les liens
+6. **Scoring persona** — évalue le contenu sur deux personas (CRM Manager et CMO), révise si un score est < 9/10
+7. **Publication** — crée deux pages Notion (FR + EN) et partage les liens
 
 Blog post et newsletter ont le même contenu — seul le format final diffère légèrement.
 
@@ -63,6 +64,17 @@ Tu peux modifier l'ordre, déplacer une feature entre phares et mineurs, ou en r
 |--------|-------|
 | FR | `[Blog / Newsletter] Nouveautés produit Batch — Q? YYYY` |
 | EN | `[Blog / Newsletter] Batch Product Updates — Q? YYYY` |
+
+## Scoring persona
+
+Après chaque rédaction (FR et EN), le skill attribue une note /10 sur deux personas avant de publier. **Minimum requis : 9/10 sur les deux.**
+
+| Persona | Ce qui est évalué |
+|---|---|
+| **CRM Manager** | Titres opérationnels, cas d'usage dans son vocabulaire, douleurs concrètes réduites, bénéfices chiffrés |
+| **CMO** | Vision business en intro/clôture, angle différenciant, lien avec le ROI, lisible en 2 minutes |
+
+Si un score est < 9, le skill révise automatiquement les passages faibles et recalcule avant de publier.
 
 ## Style éditorial
 
