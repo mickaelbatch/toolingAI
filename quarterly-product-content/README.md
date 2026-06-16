@@ -15,7 +15,7 @@ Skill Claude Code qui génère le blog post et la newsletter produit trimestriel
 5. **Rédaction** — rédige en français puis en anglais dans le style éditorial Batch (600–900 mots par version)
 6. **Tone of voice** — passe le contenu par `anthropic-skills:batch-tone-of-voice`, applique les corrections
 7. **Scoring persona** — évalue le contenu sur deux personas (CRM Manager et CMO), révise si un score est < 9/10
-8. **Publication** — crée deux pages Notion (FR + EN) et partage les liens
+8. **Publication** — crée deux pages Notion (FR + EN) **uniquement sur accord explicite de l'utilisateur en fin de session**
 
 Blog post et newsletter ont le même contenu — seul le format final diffère légèrement.
 
@@ -60,6 +60,10 @@ Tu peux modifier l'ordre, déplacer une feature entre phares et mineurs, ou en r
 ```
 
 ## Pages Notion créées
+
+Les pages ne sont créées **qu'après accord explicite de l'utilisateur** en fin de session ("c'est bon, tu peux créer le Notion"). Toute l'itération se fait dans la conversation Claude.
+
+Destination : [PMM Batch](https://app.notion.com/p/batchers/PMM-34956eb49a84801eae2ffede8eaac605)
 
 | Langue | Titre |
 |--------|-------|
