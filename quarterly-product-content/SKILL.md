@@ -242,35 +242,30 @@ Après révision, affiche les nouveaux scores avant de publier.
 
 ---
 
-## Étape 8 — Publier dans Notion
+## Étape 8 — Publication Notion (sur demande explicite uniquement)
 
-### Trouver la bonne base Notion
+**Ne pas créer les pages Notion pendant la conversation.** La publication se fait uniquement lorsque l'utilisateur donne son accord explicite en fin de session ("c'est bon, tu peux créer le Notion").
 
-Cherche dans Notion la base ou section dédiée aux blog posts / newsletters produit :
+### Destination
 
-```
-notion_search(query="blog post produit quarter newsletter")
-```
+Les deux pages sont à créer dans la page PMM Batch :
+`https://app.notion.com/p/batchers/PMM-34956eb49a84801eae2ffede8eaac605`
 
-Si plusieurs résultats, demande à l'utilisateur lequel utiliser.
-
-### Créer deux pages
-
-Crée **deux pages distinctes** dans la base identifiée :
+### Créer deux sous-pages
 
 **Page FR :**
 - Titre : `[Blog / Newsletter] Nouveautés produit Batch — [Q? YYYY]`
-- Contenu : version FR complète
+- Contenu : version FR finale (post tone of voice + scoring)
 
 **Page EN :**
 - Titre : `[Blog / Newsletter] Batch Product Updates — [Q? YYYY]`
-- Contenu : version EN complète
+- Contenu : version EN finale (post tone of voice + scoring)
 
 Pour chaque page, utilise `notion_create_pages` avec le contenu en blocs Notion (paragraphes, headings H2/H3, bulleted lists).
 
-### Après publication
+### Après création
 
-Partage les liens des deux pages à l'utilisateur.
+Partage les liens directs des deux pages à l'utilisateur.
 
 ---
 
