@@ -2,34 +2,20 @@
 
 Skill Claude Code qui génère le blog post et la newsletter produit trimestrielle de Batch — en français et en anglais — puis les publie dans Notion.
 
+**Ce skill ne se déclenche que lorsqu'il est explicitement demandé par son nom.**
+
 ## Ce que fait ce skill
 
-À partir des releases publiées dans `#product-releases` sur Slack, le skill :
+À partir des releases publiées dans `#product-releases` sur Slack, le skill suit un process en 6 étapes avec validation humaine à chaque décision clé :
 
-1. **Collecte** les releases sur la période demandée
-2. **Filtre** pour ne garder que les features client-facing (élimine les releases internes, techniques, et mineures)
-3. **Organise** les features autour de 2-3 angles narratifs forts (pas de liste chronologique)
-4. **Rédige** le contenu en français puis en anglais, dans le style éditorial Batch
-5. **Publie** deux pages Notion (FR + EN) et partage les liens
+1. **Cadrage** — demande le dernier blog post quarterly (pour éviter les redits) et la date de fin de capture Slack
+2. **Collecte & filtrage** — récupère les releases de la période, écarte les internes/techniques/déjà couverts
+3. **Sélection éditoriale** — propose 3 features phares + liste de mineurs, **attend ta validation avant de continuer**
+4. **Questions** — pose toutes ses questions en une fois si besoin, sinon passe directement à la rédaction
+5. **Rédaction** — rédige en français puis en anglais dans le style éditorial Batch (600–900 mots par version)
+6. **Publication** — crée deux pages Notion (FR + EN) et partage les liens
 
 Blog post et newsletter ont le même contenu — seul le format final diffère légèrement.
-
-## Quand l'utiliser
-
-Ce skill se déclenche dès qu'on parle de :
-
-- "blog post du quarter"
-- "newsletter produit" / "newsletter clients"
-- "product update trimestriel" / "récap produit"
-- "nouveautés Batch Q1/Q2/Q3/Q4"
-- "rédige le contenu de nos releases"
-- "prépare le product tour du semestre"
-
-## Prérequis
-
-- Accès Slack connecté (pour lire `#product-releases`)
-- Accès Notion connecté (pour créer les pages)
-- Connaître la période à couvrir (ex : "Q2 2026" ou "janvier–mars 2026")
 
 ## Utilisation
 
@@ -37,22 +23,39 @@ Ce skill se déclenche dès qu'on parle de :
 /quarterly-product-content
 ```
 
-Le skill te demandera la période si elle n'est pas fournie, puis proposera un plan de structuration narrative avant de rédiger.
+Le skill te demandera la période si elle n'est pas fournie.
+
+## Prérequis
+
+- Accès Slack connecté (pour lire `#product-releases`)
+- Accès Notion connecté (pour créer les pages)
+- Le lien du dernier blog post quarterly (ou accepter que le skill le cherche dans Notion / sur batch.com)
+- La date de fin de capture des releases (ne pas laisser le skill la deviner)
+
+## Process de validation humaine
+
+Le skill ne rédige pas sans feu vert. Avant la rédaction, il présente :
+
+```
+3 sujets phares  — avec l'angle narratif proposé pour chacun
+Sujets mineurs   — liste pour la section "Nos autres nouveautés"
+Écarté           — ce qui a été mis de côté, avec la raison
+```
+
+Tu peux modifier l'ordre, déplacer une feature entre phares et mineurs, ou en retirer/ajouter.
 
 ## Structure du contenu généré
 
 ```
 [Titre]           — centré sur le bénéfice, pas les noms de features
 [Intro]           — 3-5 lignes, frictions du quarter, invitation à lire
-[2-3 grandes features]
+[3 features phares]
   H2 = bénéfice   — nom de feature en gras à la 1ère apparition
   "Concrètement:" — 3-5 cas d'usage pratiques
 [Nos autres nouveautés]
   H3 courts       — 2-3 lignes par feature mineure
 [Clôture]         — 1-2 phrases, vision produit Batch
 ```
-
-Longueur cible : **600–900 mots** par version (FR et EN).
 
 ## Pages Notion créées
 
