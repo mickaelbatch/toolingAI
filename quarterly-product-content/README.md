@@ -13,8 +13,9 @@ Skill Claude Code qui génère le blog post et la newsletter produit trimestriel
 3. **Sélection éditoriale** — propose 3 features phares + liste de mineurs, **attend ta validation avant de continuer**
 4. **Questions** — pose toutes ses questions en une fois si besoin, sinon passe directement à la rédaction
 5. **Rédaction** — rédige en français puis en anglais dans le style éditorial Batch (600–900 mots par version)
-6. **Scoring persona** — évalue le contenu sur deux personas (CRM Manager et CMO), révise si un score est < 9/10
-7. **Publication** — crée deux pages Notion (FR + EN) et partage les liens
+6. **Tone of voice** — passe le contenu par `anthropic-skills:batch-tone-of-voice`, applique les corrections
+7. **Scoring persona** — évalue le contenu sur deux personas (CRM Manager et CMO), révise si un score est < 9/10
+8. **Publication** — crée deux pages Notion (FR + EN) et partage les liens
 
 Blog post et newsletter ont le même contenu — seul le format final diffère légèrement.
 
