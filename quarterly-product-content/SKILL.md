@@ -1,13 +1,8 @@
 ---
 name: quarterly-product-content
 description: >
-  Génère le blog post et la newsletter produit du quarter pour Batch (batch.com), en français et en anglais, 
-  et les publie dans Notion. À utiliser dès que quelqu'un demande à écrire, générer ou préparer le "blog post 
-  du quarter", la "newsletter produit", le "product update" trimestriel, le "récap produit", ou les "nouveautés 
-  Batch" d'une période donnée. Se déclenche aussi sur des formulations comme "rédige le contenu Q1/Q2/Q3/Q4", 
-  "fais le blog post de nos releases", "prépare la newsletter clients", "écris le product tour du semestre". 
-  Le skill va chercher les releases dans #product-releases sur Slack, sélectionne les features client-facing, 
-  les organise par angle narratif, rédige le contenu dans le style Batch, et crée deux pages Notion (FR + EN).
+  Génère le blog post et la newsletter produit du quarter pour Batch (batch.com), en français et en anglais,
+  et les publie dans Notion. Ce skill ne se déclenche que lorsqu'il est explicitement demandé par son nom.
 ---
 
 # Quarterly Product Content — Blog Post & Newsletter
