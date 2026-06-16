@@ -172,7 +172,17 @@ Règles spécifiques EN :
 
 ---
 
-## Étape 6 — Scoring persona avant publication
+## Étape 6 — Vérification tone of voice
+
+Avant le scoring persona, passe le contenu FR et EN par le skill `anthropic-skills:batch-tone-of-voice`.
+
+Ce skill vérifie l'alignement du contenu avec le tone of voice officiel de Batch et signale les formulations à corriger. Applique toutes les corrections suggérées avant de passer à l'étape suivante.
+
+**Ne pas publier un contenu qui n'a pas été passé par cette étape.**
+
+---
+
+## Étape 7 — Scoring persona avant publication
 
 Après avoir rédigé le contenu FR et EN, évalue le blog post sur deux dimensions avant de publier.
 
@@ -232,7 +242,7 @@ Après révision, affiche les nouveaux scores avant de publier.
 
 ---
 
-## Étape 7 — Publier dans Notion
+## Étape 8 — Publier dans Notion
 
 ### Trouver la bonne base Notion
 
@@ -302,6 +312,7 @@ Les `[internal]`, `[UX Improvement]` mineures, et releases purement techniques s
 - [ ] La version EN sonne idiomatique (pas de traduction littérale)
 - [ ] Les noms de features sont en gras à leur première apparition
 - [ ] Longueur : entre 600 et 900 mots par version
+- [ ] Contenu passé par anthropic-skills:batch-tone-of-voice (FR et EN), corrections appliquées
 - [ ] Score CRM Manager ≥ 9/10 (FR et EN)
 - [ ] Score CMO ≥ 9/10 (FR et EN)
 - [ ] Les deux pages Notion sont créées et les liens partagés
