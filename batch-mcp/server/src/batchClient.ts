@@ -70,12 +70,12 @@ export class BatchClient {
     return this.request<T>("POST", path, body);
   }
 
-  async downloadJson<T>(url: string): Promise<T> {
+  async downloadText(url: string): Promise<string> {
     const res = await fetch(url, { headers: this.headers() });
     if (!res.ok) {
       throw new BatchApiError(res.status, undefined, `Failed to download export file: HTTP ${res.status}`);
     }
-    return (await res.json()) as T;
+    return res.text();
   }
 
   private async request<T>(method: string, path: string, body?: unknown, query?: Query): Promise<T> {

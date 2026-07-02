@@ -52,7 +52,7 @@ Ne jamais committer ce fichier de config avec la vraie clé dedans.
 |---|---|---|
 | `batch_export_profiles` | `POST /profiles/export` | Crée une demande d'export (lecture bulk async) |
 | `batch_get_export_status` | `GET /exports/view` | Poll le statut d'un export |
-| `batch_download_export` | (download URL) | Télécharge le contenu JSON d'un export terminé |
+| `batch_download_export` | (download URL) | Télécharge un export terminé — au-delà de ~200KB, renvoie un résumé (nombre d'enregistrements + aperçu) au lieu du fichier entier |
 | `batch_list_exports` | `GET /exports/list` | Liste les exports des 4 derniers mois |
 | `batch_create_campaign` | `POST /campaigns/create` | Crée une campagne push/email — **toujours `state: DRAFT`**, jamais envoyée |
 | `batch_update_campaign` | `POST /campaigns/update` | Remplace le contenu d'un brouillon existant |
@@ -68,9 +68,10 @@ Ne jamais committer ce fichier de config avec la vraie clé dedans.
 
 Aucun outil d'écriture sur les profils, audiences, catalogues ou segments n'est exposé : ce serveur est lecture-seule sur toute l'API sauf pour les campagnes, où seule la gestion de brouillons (`create`/`update`/`delete`, jamais `RUNNING`) est permise.
 
-## Limitation connue
+## Limitations connues
 
-Il n'y a pas de tool `batch_get_profile(custom_id)` : l'API Batch ne propose pas de lecture synchrone d'un profil unique. Voir la section "Profile API" du [guide principal](../README.md#4-profile-api--ce-quon-peut-et-ne-peut-pas-faire).
+- Il n'y a pas de tool `batch_get_profile(custom_id)` : l'API Batch ne propose pas de lecture synchrone d'un profil unique. Voir la section "Profile API" du [guide principal](../README.md#4-profile-api--ce-quon-peut-et-ne-peut-pas-faire).
+- Les exports de profils sont en pratique volumineux (testé : 51 745 profils pour 8 Mo). `batch_download_export` ne renvoie jamais le fichier brut au-delà de ~200KB — utile pour compter/échantillonner, pas pour rapatrier une base entière dans la conversation.
 
 ## Développement
 
