@@ -34,7 +34,16 @@ const campaignSchema = {
   regions: z.array(z.string()).optional(),
   query: z.record(z.string(), z.any()).optional().describe("Mongo-like targeting query on profile attributes/events."),
   labels: z.array(z.string()).max(5).optional(),
-  message: z.union([pushMessage, emailMessage]).describe("The single message (push or email) to send."),
+  message: z
+    .union([pushMessage, emailMessage])
+    .describe(
+      "The single message (push or email) to send, keyed by channel_type. " +
+        'Push example: {"channel_type":"push","title":"...","body":"...","platform_type":["ios","android"]}. ' +
+        'Email example: {"channel_type":"email","subject":"...","sender_identity_id":"...","html":"..."}. ' +
+        "Note: this create/update shape is flat and differs from what batch_view_orchestration returns, which nests " +
+        "the same fields under a push_content/email_content object — that nested shape is the read API's own format " +
+        "and must not be copied verbatim into this field.",
+    ),
 };
 
 function buildCampaignBody(input: {
